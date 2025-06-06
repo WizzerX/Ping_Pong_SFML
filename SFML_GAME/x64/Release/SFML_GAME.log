@@ -1,0 +1,13 @@
+﻿  SFML_GAME.cpp
+D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\ThirdPartyLib\include\SFML\System\Exception.hpp(41,47): warning C4275: non dll-interface class 'std::runtime_error' used as base for dll-interface class 'sf::Exception'
+  (compiling source file 'SFML_GAME.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\stdexcept(100,19):
+      see declaration of 'std::runtime_error'
+      D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\ThirdPartyLib\include\SFML\System\Exception.hpp(41,23):
+      see declaration of 'sf::Exception'
+  
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 10 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SFML_GAME.vcxproj -> D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\x64\Release\SFML_GAME.exe
