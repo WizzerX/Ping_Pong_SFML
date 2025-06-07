@@ -3,37 +3,49 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({ 1440, 1080 }), "GAME RUNING!");
-    sf::CircleShape shape(100.f);
-    sf::Texture texture1;
+    sf::RenderWindow window(sf::VideoMode({ 1440, 1080 }), "Software Runing!");
+    sf::RectangleShape shape(sf::Vector2f(100.f,100.f));
+    shape.setFillColor(sf::Color::Cyan);
+   
+    sf::Texture bgtexture("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/images/background.jpg");
+    sf::Sprite bgsprite(bgtexture);
+    
 
-    sf::RectangleShape paddle(sf::Vector2f(500.0f,500.f));
-    paddle.setFillColor(sf::Color::Red);
-    paddle.setPosition(sf::Vector2f(500.f, 900.f));
-
- 
-    sf::Texture BGTexture;
-    BGTexture.setSmooth(false);
-    if (!BGTexture.loadFromFile("../assets/images/background.jpg")) {
-
-    }
     sf::Vector2u windowsize = window.getSize();
-    sf::Vector2u BackgroundSize = BGTexture.getSize();
+    sf::Vector2u texturesize = bgtexture.getSize();
 
-    float scaleX = static_cast <float>(windowsize.x) / BackgroundSize.x;
-    float scaleY = static_cast<float>(windowsize.y) / BackgroundSize.y;
-   
+    float scalex = static_cast<float>(windowsize.x) / texturesize.y;
+    float scaley = static_cast<float>(windowsize.y) / texturesize.y;
 
-    sf::Sprite background(BGTexture);
+    bgsprite.setScale(sf::Vector2f(scalex, scaley));
 
-    background.setScale(sf::Vector2f(scaleX, scaleY));
-   
-
+    sf::Texture texture1;
     if (!texture1.loadFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/SFML_GAME/football.jpg")) {
-        std::cout << "Failed to load!";
-        
+        std::cout<<"ERROR IN LOADING THE FILE!n\n";
     }
-    shape.setTexture(&texture1);
+
+    sf::RectangleShape shape3(sf::Vector2f(120.f,120.f));
+    shape3.setTexture(&texture1);
+    shape3.setPosition(sf::Vector2f(500.f, 800.f));
+
+
+
+    sf::Texture sqauretexture("../assets/images/redball.jpg");
+    sf::Sprite sqauresprite(sqauretexture);
+    sqauresprite.setScale(sf::Vector2f(0.5f, 0.5f));
+    sqauresprite.setPosition(sf::Vector2f(500.f, 200.f));
+    
+
+
+
+  
+    
+
+    
+
+   
+
+   
 
 
 
@@ -44,18 +56,22 @@ int main()
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
-        shape.move(sf::Vector2f(0.f, 0.1f));
 
+
+        shape.move(sf::Vector2f(0.f, 0.1f));
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
             sf::Vector2i mousepos= sf::Mouse::getPosition(window);
             shape.setPosition(sf::Vector2f(mousepos));
-       }
-        
+        }
+        sqauresprite.move(sf::Vector2f(0.0f, 0.1f));
+       
 
         window.clear();
-        window.draw(background);
-        window.draw(shape);
-        window.draw(paddle);
+        window.draw(bgsprite);
+        window.draw(shape3);
+       // window.draw(square);
+        window.draw(sqauresprite);
+
         window.display();
     }
 }

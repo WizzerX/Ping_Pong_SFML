@@ -35,5 +35,8 @@
     <Image Include="..\assets\images\paddle.jpg">
       <Filter>Resource Files\assets\images</Filter>
     </Image>
+    <Image Include="..\assets\images\redball.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
