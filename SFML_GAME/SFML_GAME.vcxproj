@@ -138,7 +138,9 @@
     <ClCompile Include="SFML_GAME.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="download (1).jpg" />
+    <Image Include="..\assets\images\background.jpg" />
+    <Image Include="..\assets\images\paddle.jpg" />
+    <Image Include="football.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

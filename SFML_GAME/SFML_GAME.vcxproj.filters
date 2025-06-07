@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\assets">
+      <UniqueIdentifier>{bf023136-2f8c-4a73-8400-8d7b3dae1c4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\assets\images">
+      <UniqueIdentifier>{e40945ed-6e00-461d-a37c-bf35342dfc5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFML_GAME.cpp">
@@ -20,8 +26,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="download (1).jpg">
-      <Filter>Resource Files</Filter>
+    <Image Include="..\assets\images\background.jpg">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="football.jpg">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="..\assets\images\paddle.jpg">
+      <Filter>Resource Files\assets\images</Filter>
     </Image>
   </ItemGroup>
 </Project>
