@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
+#include <math.h>
 
 int main()
 {
@@ -33,7 +33,7 @@ int main()
 
 	backgroundsprite.setScale(sf::Vector2f(scalex, scaley));
 
-	sf::Vector2f ballVelocity(0.f, 0.5f); // Ball starts moving down
+	sf::Vector2f ballVelocity(0.f, 0.2f); // Ball starts moving down
 	//ball setup
 	sf::Texture balltexture;
 	if (!balltexture.loadFromFile("../assets/images/orangeball.png")) {
@@ -41,12 +41,38 @@ int main()
 	}
 	sf::Sprite ballsprite(balltexture);
 	ballsprite.setScale(sf::Vector2f(0.5f, 0.5f));
+	ballsprite.setPosition(sf::Vector2f(150.f, 50.f));
 	
+	//upper wall
+	sf::RectangleShape upperwall(sf::Vector2f(1100,5));
+	//upperwall.setScale(sf::Vector2f(0.9, 0.3));
+	upperwall.setFillColor(sf::Color::Red);
+	upperwall.setPosition(sf::Vector2(00.f, 00.f));
+	sf::Texture walltexture;
+	upperwall.setTexture(&walltexture);
+	sf::FloatRect upwallbound = upperwall.getGlobalBounds();
+
+	//left wall
+	sf::RectangleShape leftwall(sf::Vector2f(5.f, 1111.f));
+	leftwall.setFillColor(sf::Color::Yellow);
+	leftwall.setPosition(sf::Vector2(00.f, 00.f));
+	sf::FloatRect leftwallbound = leftwall.getGlobalBounds();
+
+	//right wall
+	sf::RectangleShape rightwall(sf::Vector2f(5.f, 1150));
+	rightwall.setFillColor(sf::Color::White);
+	rightwall.setPosition(sf::Vector2(1075.f, 0.f));
+	sf::FloatRect rightwallbound = rightwall.getGlobalBounds();
 
 
+	//bottom wall
+	sf::RectangleShape bottomwall(sf::Vector2f(1200.f, 5.f));
+	bottomwall.setFillColor(sf::Color::White);
+	bottomwall.setPosition(sf::Vector2(0.f, 715.f));
+	sf::FloatRect bottomwallbound = bottomwall.getGlobalBounds();
 
 
-
+	
 
 	while (Window.isOpen()) {
 
@@ -66,17 +92,37 @@ int main()
 		sf::FloatRect boundingpaw = pawsprite.getGlobalBounds();
 		sf::FloatRect boundingball = ballsprite.getGlobalBounds();
 		if (boundingball.findIntersection(boundingpaw)) {
-			ballsprite.move(sf::Vector2f(0.0f, -0.5f));
+			ballVelocity.y *= -1;
+
+			ballsprite.setRotation(sf::Angle(sf::degrees(150.f)));
 			std::cout << "YES!\n";
-		}else
-		ballsprite.move(sf::Vector2f(0.f, 0.2f));
+		}
+		else if (upwallbound.findIntersection(boundingball)) {
+			std::cout << "ooo yesh!\n";
+			ballVelocity.y *= -1;
+
+		}
+		else if (leftwallbound.findIntersection(boundingball)) {
+			std::cout << "left wall hit!\n";
+			ballVelocity.x *= 1;
+		}
+		
+		
+
+		ballsprite.move(sf::Vector2f(ballVelocity));
 	
 
 		Window.clear();
 		Window.draw(backgroundsprite);
 		Window.draw(pawsprite);
 		Window.draw(ballsprite);
+		Window.draw(upperwall);
+		Window.draw(leftwall);
+		Window.draw(rightwall);
+		Window.draw(bottomwall);
 		Window.display();
+
+
 	}
 
 
