@@ -1,9 +1,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <math.h>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
+	
 	sf::RenderWindow Window(sf::VideoMode({ 1080,720 }), "GameRuning!");
 	//paw setup
 	sf::Texture PawTexture;
@@ -33,14 +36,14 @@ int main()
 
 	backgroundsprite.setScale(sf::Vector2f(scalex, scaley));
 
-	sf::Vector2f ballVelocity(0.f, 0.2f); // Ball starts moving down
+	sf::Vector2f ballVelocity(0.f, 0.1f); // Ball starts moving down
 	//ball setup
 	sf::Texture balltexture;
 	if (!balltexture.loadFromFile("../assets/images/orangeball.png")) {
 		std::cout << "error in load the ball texture!\n";
 	}
 	sf::Sprite ballsprite(balltexture);
-	ballsprite.setScale(sf::Vector2f(0.5f, 0.5f));
+	ballsprite.setScale(sf::Vector2f(0.3f, 0.3f));
 	ballsprite.setPosition(sf::Vector2f(150.f, 50.f));
 	
 	//upper wall
@@ -58,6 +61,9 @@ int main()
 	leftwall.setPosition(sf::Vector2(00.f, 00.f));
 	sf::FloatRect leftwallbound = leftwall.getGlobalBounds();
 
+
+
+
 	//right wall
 	sf::RectangleShape rightwall(sf::Vector2f(5.f, 1150));
 	rightwall.setFillColor(sf::Color::White);
@@ -72,10 +78,12 @@ int main()
 	sf::FloatRect bottomwallbound = bottomwall.getGlobalBounds();
 
 
-	
+	std::srand(std::time(0));
 
 	while (Window.isOpen()) {
-
+		
+		
+	
 
 		while (std::optional event = Window.pollEvent()) {
 			if (event->is<sf::Event::Closed>()) {
@@ -84,27 +92,49 @@ int main()
 			sf::Vector2i pos = sf::Mouse::getPosition(Window);
 			float  posx = static_cast<float>(pos.x);
 			//float  posy = static_cast<float>(pos.y);
-
-			pawsprite.setPosition(sf::Vector2f(posx,510.f));
-
+			if (posx >= 3 && posx <= 955) {
+				pawsprite.setPosition(sf::Vector2f(posx, 510.f));
+				
+			}
 
 		}
 		sf::FloatRect boundingpaw = pawsprite.getGlobalBounds();
 		sf::FloatRect boundingball = ballsprite.getGlobalBounds();
 		if (boundingball.findIntersection(boundingpaw)) {
-			ballVelocity.y *= -1;
+			int randomnumber = std::rand() % 10;
+			float ballXaxis;
 
-			ballsprite.setRotation(sf::Angle(sf::degrees(150.f)));
+			if (randomnumber % 2 == 0) {
+
+				ballXaxis = -0.1;
+			}
+			else {
+				ballXaxis = 0.1;
+			}
+			ballVelocity.y *= -1;
+			ballVelocity.x = ballXaxis;
+
+			std::cout << randomnumber << "\n";
+			
+			//ballsprite.setRotation(sf::Angle(sf::degrees(180.f)));
 			std::cout << "YES!\n";
 		}
 		else if (upwallbound.findIntersection(boundingball)) {
 			std::cout << "ooo yesh!\n";
 			ballVelocity.y *= -1;
+			ballVelocity.x *= 1;
+			
+			//ballsprite.setRotation(sf::Angle(sf::degrees(10.f)));
 
 		}
 		else if (leftwallbound.findIntersection(boundingball)) {
 			std::cout << "left wall hit!\n";
-			ballVelocity.x *= 1;
+			ballVelocity.x *= -1;
+			//ballsprite.setRotation(sf::Angle(sf::degrees(50.f)));
+		}
+		else if (rightwallbound.findIntersection(boundingball)) {
+			std::cout << "right wall Hit!\n";
+			ballVelocity.x *= -1;
 		}
 		
 		
