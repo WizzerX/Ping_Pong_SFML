@@ -77,7 +77,7 @@ int main()
 	bottomwall.setPosition(sf::Vector2(0.f, 715.f));
 	sf::FloatRect bottomwallbound = bottomwall.getGlobalBounds();
 
-
+	//seed for random direction
 	std::srand(std::time(0));
 
 	while (Window.isOpen()) {
@@ -101,36 +101,40 @@ int main()
 		sf::FloatRect boundingpaw = pawsprite.getGlobalBounds();
 		sf::FloatRect boundingball = ballsprite.getGlobalBounds();
 		if (boundingball.findIntersection(boundingpaw)) {
-			int randomnumber = std::rand() % 10;
-			float ballXaxis;
-
-			if (randomnumber % 2 == 0) {
-
-				ballXaxis = -0.1;
-			}
-			else {
-				ballXaxis = 0.1;
-			}
-			ballVelocity.y *= -1;
-			ballVelocity.x = ballXaxis;
-
-			std::cout << randomnumber << "\n";
+			float angleX = static_cast<float>(std::rand() % 100 - 50) / 100.f; // -0.5 to 0.5
 			
-			//ballsprite.setRotation(sf::Angle(sf::degrees(180.f)));
-			std::cout << "YES!\n";
+			//ballVelocity.x = angleX;
+			 float maxspeed = 0.7;
+			
+			//if (ballVelocity.y < -0.7f)
+				//ballVelocity.y = -maxspeed;
+			
+			if(ballVelocity.y>-3.f)
+			ballVelocity.y *= -1.f;
+			ballVelocity.x = angleX;
+			
+				
+			std::cout << ballVelocity.x << "X AXIS SPEED\n";
+			std::cout << ballVelocity.y << "Y axis speed\n";
+
+
+			std::cout << "ball hit by paw!\n";
+			
+			
+			
 		}
 		else if (upwallbound.findIntersection(boundingball)) {
 			std::cout << "ooo yesh!\n";
 			ballVelocity.y *= -1;
 			ballVelocity.x *= 1;
 			
-			//ballsprite.setRotation(sf::Angle(sf::degrees(10.f)));
+
 
 		}
 		else if (leftwallbound.findIntersection(boundingball)) {
 			std::cout << "left wall hit!\n";
 			ballVelocity.x *= -1;
-			//ballsprite.setRotation(sf::Angle(sf::degrees(50.f)));
+		
 		}
 		else if (rightwallbound.findIntersection(boundingball)) {
 			std::cout << "right wall Hit!\n";
