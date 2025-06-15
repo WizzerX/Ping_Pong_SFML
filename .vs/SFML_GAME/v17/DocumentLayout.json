@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\WebDeve\\SFML\\SFML_Projects\\SFML_GAME\\SFML_GAME\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5062AD78-F2DD-4CDA-8CF7-0EF592BE6E09}|SFML_GAME\\SFML_GAME.vcxproj|D:\\WebDeve\\SFML\\SFML_Projects\\SFML_GAME\\SFML_GAME\\SFML_GAME\\SFML_GAME.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5062AD78-F2DD-4CDA-8CF7-0EF592BE6E09}|SFML_GAME\\SFML_GAME.vcxproj|solutionrelative:SFML_GAME\\SFML_GAME.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SFML_GAME.cpp",
+              "DocumentMoniker": "D:\\WebDeve\\SFML\\SFML_Projects\\SFML_GAME\\SFML_GAME\\SFML_GAME\\SFML_GAME.cpp",
+              "RelativeDocumentMoniker": "SFML_GAME\\SFML_GAME.cpp",
+              "ToolTip": "D:\\WebDeve\\SFML\\SFML_Projects\\SFML_GAME\\SFML_GAME\\SFML_GAME\\SFML_GAME.cpp*",
+              "RelativeToolTip": "SFML_GAME\\SFML_GAME.cpp*",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAswIwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-06T02:26:50.314Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -111,7 +111,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\ThirdPartyLib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -144,6 +144,13 @@
     <Image Include="..\assets\images\paw.png" />
     <Image Include="..\assets\images\redball.jpg" />
     <Image Include="football.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\assets\sound\BallHit.wav" />
+    <Media Include="..\assets\sound\CatHit.wav">
+      <DeploymentContent>false</DeploymentContent>
+    </Media>
+    <Media Include="..\assets\sound\Winsound.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

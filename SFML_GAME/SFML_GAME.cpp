@@ -3,6 +3,8 @@
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
+#include <SFML/Audio.hpp>
+
 
 int main()
 {
@@ -15,8 +17,13 @@ int main()
 	}
 	sf::Sprite pawsprite(PawTexture);
 	pawsprite.setScale(sf::Vector2f(0.5f, 0.5f));
-	pawsprite.setPosition(sf::Vector2f(500.f, 1200.f));
+	pawsprite.setPosition(sf::Vector2f(500.f, 100.f));
+	sf::RectangleShape boundingbox;
 
+	boundingbox.setFillColor(sf::Color::Red); // Transparent fill
+	boundingbox.setOutlineColor(sf::Color::Red);     // Red outline
+	boundingbox.setOutlineThickness(2.f);
+	;
 
 	Window.setMouseCursorVisible(false);
 	
@@ -91,9 +98,16 @@ int main()
 			}
 			sf::Vector2i pos = sf::Mouse::getPosition(Window);
 			float  posx = static_cast<float>(pos.x);
+
+
+
+
+
+
 			//float  posy = static_cast<float>(pos.y);
 			if (posx >= 3 && posx <= 955) {
-				pawsprite.setPosition(sf::Vector2f(posx, 510.f));
+				pawsprite.setPosition(sf::Vector2f(posx, 570.f));
+				boundingbox.setPosition(sf::Vector2f(pos));
 				
 			}
 
@@ -101,30 +115,36 @@ int main()
 		sf::FloatRect boundingpaw = pawsprite.getGlobalBounds();
 		sf::FloatRect boundingball = ballsprite.getGlobalBounds();
 		if (boundingball.findIntersection(boundingpaw)) {
-			float angleX = static_cast<float>(std::rand() % 100 - 50) / 100.f; // -0.5 to 0.5
 			
-			//ballVelocity.x = angleX;
-			 float maxspeed = 0.7;
-			
-			//if (ballVelocity.y < -0.7f)
-				//ballVelocity.y = -maxspeed;
-			
-			if(ballVelocity.y>-3.f)
-			ballVelocity.y *= -1.f;
+			float randmax = 1;
+			float angleX = static_cast<float>(std::rand() % 100) / 100; // -0.5 to 0.5
+			angleX /= 8;
+
+			float maxspeed = 0.7;
+
+
+			if (ballVelocity.y >= -1.f)
+				ballVelocity.y *= -1.f;
 			ballVelocity.x = angleX;
-			
-				
+
+
 			std::cout << ballVelocity.x << "X AXIS SPEED\n";
 			std::cout << ballVelocity.y << "Y axis speed\n";
 
 
 			std::cout << "ball hit by paw!\n";
-			
-			
+			sf::SoundBuffer CatHitbuffer;
+			if (!CatHitbuffer.loadFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/sound/CatHit.wav")) {
+				std::cout << "failed to play the sound!\n";
+			}
+			sf::Sound HitSound(CatHitbuffer);
+			HitSound.setVolume(80.f);
+			HitSound.play();
+
 			
 		}
 		else if (upwallbound.findIntersection(boundingball)) {
-			std::cout << "ooo yesh!\n";
+			
 			ballVelocity.y *= -1;
 			ballVelocity.x *= 1;
 			
@@ -132,12 +152,12 @@ int main()
 
 		}
 		else if (leftwallbound.findIntersection(boundingball)) {
-			std::cout << "left wall hit!\n";
+
 			ballVelocity.x *= -1;
 		
 		}
 		else if (rightwallbound.findIntersection(boundingball)) {
-			std::cout << "right wall Hit!\n";
+			
 			ballVelocity.x *= -1;
 		}
 		
@@ -154,6 +174,7 @@ int main()
 		Window.draw(leftwall);
 		Window.draw(rightwall);
 		Window.draw(bottomwall);
+		Window.draw(boundingbox);
 		Window.display();
 
 

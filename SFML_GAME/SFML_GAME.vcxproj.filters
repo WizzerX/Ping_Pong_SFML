@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\assets\images">
       <UniqueIdentifier>{e40945ed-6e00-461d-a37c-bf35342dfc5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\sound">
+      <UniqueIdentifier>{a2ea5394-f280-42c5-bd25-b30587747a5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SFML_GAME.cpp">
@@ -44,5 +47,16 @@
     <Image Include="..\assets\images\orangeball.png">
       <Filter>Resource Files\assets\images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\assets\sound\CatHit.wav">
+      <Filter>Resource Files\sound</Filter>
+    </Media>
+    <Media Include="..\assets\sound\Winsound.wav">
+      <Filter>Resource Files\sound</Filter>
+    </Media>
+    <Media Include="..\assets\sound\BallHit.wav">
+      <Filter>Resource Files\sound</Filter>
+    </Media>
   </ItemGroup>
 </Project>
