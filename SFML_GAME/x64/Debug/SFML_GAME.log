@@ -6,6 +6,6 @@ D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\ThirdPartyLib\include\SFML\Sys
       D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\ThirdPartyLib\include\SFML\System\Exception.hpp(41,23):
       see declaration of 'sf::Exception'
   
-D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\SFML_GAME\SFML_GAME.cpp(107,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\SFML_GAME\SFML_GAME.cpp(142,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\SFML_GAME\SFML_GAME.cpp(126,22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\SFML_GAME\SFML_GAME.cpp(161,19): warning C4305: 'initializing': truncation from 'double' to 'float'
   SFML_GAME.vcxproj -> D:\WebDeve\SFML\SFML_Projects\SFML_GAME\SFML_GAME\x64\Debug\SFML_GAME.exe

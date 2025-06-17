@@ -4,12 +4,31 @@
 #include <cstdlib>
 #include <ctime>
 #include <SFML/Audio.hpp>
+#include "SFML/Graphics/Text.hpp"
+#include "SFML/Graphics/Font.hpp"
 
 
 int main()
 {
 	
-	sf::RenderWindow Window(sf::VideoMode({ 1080,720 }), "GameRuning!");
+	sf::RenderWindow Window(sf::VideoMode({ 1080,720 }), "GameRuning!",sf::Style::Titlebar  | sf::Style::Close);
+	int score = 0;
+
+	sf::Font font;
+	if (!font.openFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/fonts/Orange Gummy.ttf")) {
+		std::cout << "Error in loading the font!\n";
+
+	}
+	sf::Text ScoreText(font);
+	ScoreText.setCharacterSize(30);
+	ScoreText.setFillColor(sf::Color::White);
+	ScoreText.setFont(font);
+	ScoreText.setPosition(sf::Vector2f(20.f, 20.f));
+	ScoreText.setString("Score: 0");
+
+	
+
+
 
 	/************************************sound setup*****************************************/
 	sf::SoundBuffer CatHitbuffer;
@@ -138,7 +157,7 @@ int main()
 			float randmax = 1;
 			float angleX = static_cast<float>(std::rand() % 100) / 100; // -0.5 to 0.5
 			angleX /= 8;
-
+			ballsprite.move(sf::Vector2f(0.f, -10.f));
 			float maxspeed = 0.7;
 
 
@@ -149,6 +168,8 @@ int main()
 
 			std::cout << ballVelocity.x << "X AXIS SPEED\n";
 			std::cout << ballVelocity.y << "Y axis speed\n";
+			score++;
+			ScoreText.setString("Score: " + std::to_string(score));
 
 
 			std::cout << "ball hit by paw!\n";
@@ -176,7 +197,10 @@ int main()
 			ballVelocity.x *= -1;
 			ballhitsound.play();
 		}
-		
+		else if (bottomwallbound.findIntersection(boundingball)) {
+			ScoreText.setString("Score: "+std::to_string(score=0));
+			
+		}
 		
 
 		ballsprite.move(sf::Vector2f(ballVelocity));
@@ -191,6 +215,7 @@ int main()
 		Window.draw(rightwall);
 		Window.draw(bottomwall);
 		Window.draw(boundingbox);
+		Window.draw(ScoreText);
 		Window.display();
 
 
