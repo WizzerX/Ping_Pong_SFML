@@ -10,6 +10,25 @@ int main()
 {
 	
 	sf::RenderWindow Window(sf::VideoMode({ 1080,720 }), "GameRuning!");
+
+	/************************************sound setup*****************************************/
+	sf::SoundBuffer CatHitbuffer;
+	if (!CatHitbuffer.loadFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/sound/CatHit.wav")) {
+		std::cout << "failed to play the sound!\n";
+	}
+	sf::Sound HitSound(CatHitbuffer);
+	HitSound.setVolume(30.f);
+	//////////////////////////////////////////////////////////////////////////////////////
+	sf::SoundBuffer ballhitbuffer;
+	if (!ballhitbuffer.loadFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/sound/BallHit1.wav")) {
+		std::cout << "Failed to play wall hit sound!\n";
+		
+		
+	}
+
+	sf::Sound ballhitsound(ballhitbuffer);
+	ballhitsound.setVolume(80.f);
+	/************************************sound setup*****************************************/
 	//paw setup
 	sf::Texture PawTexture;
 	if (!PawTexture.loadFromFile("../assets/images/paw.png")) {
@@ -133,12 +152,7 @@ int main()
 
 
 			std::cout << "ball hit by paw!\n";
-			sf::SoundBuffer CatHitbuffer;
-			if (!CatHitbuffer.loadFromFile("D:/WebDeve/SFML/SFML_Projects/SFML_GAME/SFML_GAME/assets/sound/CatHit.wav")) {
-				std::cout << "failed to play the sound!\n";
-			}
-			sf::Sound HitSound(CatHitbuffer);
-			HitSound.setVolume(80.f);
+			
 			HitSound.play();
 
 			
@@ -147,6 +161,7 @@ int main()
 			
 			ballVelocity.y *= -1;
 			ballVelocity.x *= 1;
+			ballhitsound.play();
 			
 
 
@@ -154,11 +169,12 @@ int main()
 		else if (leftwallbound.findIntersection(boundingball)) {
 
 			ballVelocity.x *= -1;
-		
+			ballhitsound.play();
 		}
 		else if (rightwallbound.findIntersection(boundingball)) {
 			
 			ballVelocity.x *= -1;
+			ballhitsound.play();
 		}
 		
 		
