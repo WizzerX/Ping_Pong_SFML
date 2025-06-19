@@ -139,10 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\assets\images\background.jpg" />
+    <Image Include="..\assets\images\background.png" />
     <Image Include="..\assets\images\orangeball.png" />
     <Image Include="..\assets\images\paddle.jpg" />
     <Image Include="..\assets\images\paw.png" />
     <Image Include="..\assets\images\redball.jpg" />
+    <Image Include="..\assets\UI\PAUSE.png" />
     <Image Include="football.jpg" />
   </ItemGroup>
   <ItemGroup>

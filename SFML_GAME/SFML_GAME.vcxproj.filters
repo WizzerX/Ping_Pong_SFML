@@ -47,6 +47,12 @@
     <Image Include="..\assets\images\orangeball.png">
       <Filter>Resource Files\assets\images</Filter>
     </Image>
+    <Image Include="..\assets\images\background.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
+    <Image Include="..\assets\UI\PAUSE.png">
+      <Filter>Resource Files\assets\images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\assets\sound\CatHit.wav">
